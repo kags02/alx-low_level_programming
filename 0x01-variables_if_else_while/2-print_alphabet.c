@@ -4,9 +4,8 @@
  * return: always 0 (success)
  */
 int main(void)
-
 { 
-	char ch = 'a';
+	char ch='a';
 
 	while (ch <= 'z')
 	{
