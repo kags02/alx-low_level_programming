@@ -9,13 +9,13 @@
 
 int main(void)
 {
-char ch;
+	char ch;
 ch = 'z';
-while (ch >= 'a')
-{
-putchar(ch);
-ch--;
-}
-putchar('\n');
+ while (ch >= 'a')
+ {
+	 putchar(ch);
+ ch--;
+ }
+ putchar('\n');
 return (0);
 }
