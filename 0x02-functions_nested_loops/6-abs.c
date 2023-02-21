@@ -1,21 +1,20 @@
 /*
- * File: 4-isalpha.c
+ * File: 6-abs.c
  * Auth: kageruka
  */
 
 #include "main.h"
 
 /**
- * _isalpha - Checks if a character is alphabetic.
- * @c: The character to be checked.
+ * _abs - Computes the absolute value of an integer.
+ * @n: The integer to be computed.
  *
- * Return: 1 if character is letter, lowercase or uppercase, 0 otherwise.
+ * Return: The absolute value of the integer.
  */
-int _isalpha(int c)
+int _abs(int n)
 {
-	if ((c >= 'a' && c <= 'z') ||
-	    (c >= 'A' && c <= 'Z'))
-		return (1);
+	if (n >= 0)
+		return (n);
 	else
-		return (0);
+		return (-n);
 }
