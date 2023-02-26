@@ -6,7 +6,7 @@
  */
 void print_number(int n)
 {
-        int x,y,z,i,c=0,s;
+        int x,z,i,c=0,s;
 	i=n;
         for (x=3;x>=1;x++)
         {
