@@ -4,17 +4,17 @@
  * followed by a new line
  * Return: Always 0 (Success)
  */
-void print_number(int i)
+void print_number(int n)
 {
-        int x,y,z,n,c=0,s;
-	n=i;
+        int x,y,z,i,c=0,s;
+	i=n;
         for (x=3;x>=1;x++)
         {
-                i=i/10;
+                n=n/10;
                 c++;
-                if ((i)==0)
+                if ((n)==0)
                 break;}
-	if (n<0)
+	if (i<0)
 	{
 		_putchar('-');
 	}
@@ -26,7 +26,7 @@ void print_number(int i)
 			for (s=x;s>=1;s--)
 			{ y=y*10;}
 			
-                        z=n/y;
+                        z=i/y;
 			if (z<0)
 			{
 				_putchar(-(z%10) + '0');
@@ -38,14 +38,14 @@ void print_number(int i)
                 }
                 else
                 {
-		if (n<0)
+		if (i<0)
 		{
-			_putchar(-(n%10) + '0');
+			_putchar(-(i%10) + '0');
 		}
 		else
 
 		{
-			_putchar(n%10 + '0');}
+			_putchar(i%10 + '0');}
                 }
         }
         
