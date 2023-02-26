@@ -1,4 +1,4 @@
-#include <stdio.h>
+#include "main.h"
 /**
  * print any integer using only _putchar function
  * followed by a new line
@@ -16,7 +16,7 @@ void print_number(int i)
                 break;}
 	if (n<0)
 	{
-		putchar('-');
+		_putchar('-');
 	}
 
         for (x=(c-1);x>=0;x--)
@@ -28,17 +28,24 @@ void print_number(int i)
 			
                         z=n/y;
 			if (z<0)
-			{putchar(-(z%10) + '0');}
+			{
+				_putchar(-(z%10) + '0');
+			}
 			else
-			{putchar((z%10) + '0');}
+			{
+				_putchar((z%10) + '0');
+			}
                 }
                 else
                 {
 		if (n<0)
-		{putchar(-(n%10) + '0');}
+		{
+			_putchar(-(n%10) + '0');
+		}
 		else
 
-		{putchar(n%10 + '0');}
+		{
+			_putchar(n%10 + '0');}
                 }
         }
         
