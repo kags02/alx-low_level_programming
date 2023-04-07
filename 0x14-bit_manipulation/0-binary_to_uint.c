@@ -20,8 +20,6 @@ unsigned int binary_to_uint(const char *b)
 			n = n * 2 + f;
 			x++;
 		}
-		else
-			return (0);
 	}
 return (n);
 }
