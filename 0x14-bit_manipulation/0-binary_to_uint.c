@@ -2,8 +2,9 @@
 
 /**
  * binary_to_uint - changes binary to integer.
- * @b: pointer to binary.
- * Return: the integer from binary and 0 if the input is not binary.
+ * @b: pointer to string of 0 and 1 chars.
+ * Return: if b is NULL or contains chars not 0 or 1 - 0.
+ * otherwise - the converted number.
  */
 
 unsigned int binary_to_uint(const char *b)
@@ -23,8 +24,7 @@ unsigned int binary_to_uint(const char *b)
 		}
 		else 
 		{
-			n=0;
-			break;
+			return (0);
 		}
 	}
 return (n);
