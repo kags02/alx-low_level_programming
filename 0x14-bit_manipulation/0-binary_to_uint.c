@@ -20,12 +20,10 @@ unsigned int binary_to_uint(const char *b)
 		{
 			f = b[x] - '0';
 			n = n * 2 + f;
-			x++;
 		}
 		else
-		{
-			return (0);
-		}
+		return (0);
+		x++;
 	}
-return (n);
+	return (n);
 }
