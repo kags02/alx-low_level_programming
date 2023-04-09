@@ -9,8 +9,8 @@ int set_bit(unsigned long int *n, unsigned int index)
 {
 	unsigned long int d, t = 1;
 	unsigned long int g = 0, r = 0;
-	long unsigned int f = 0, h = 0;
-	long unsigned int s;
+	unsigned long int f = 0, h = 0;
+	unsigned long int s;
 
 	s = *n;
 	while (s != 0)
@@ -31,7 +31,10 @@ int set_bit(unsigned long int *n, unsigned int index)
 		g = g / 10;
 		t = t * 2;
 		if (index > h && f == index)
-			break;
+		{
+			*n = r;
+			return (1);
+		}
 		f++;
 	}
 	*n = r;
