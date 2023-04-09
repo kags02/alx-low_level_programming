@@ -2,9 +2,9 @@
 
 /**
  * binary_to_uint - changes binary to integer.
- * @b: pointer to string of 0 and 1 chars.
+ * @b: pointer to binary string.
  * Return: if b is NULL or contains chars not 0 or 1 - 0.
- * otherwise - the converted number.
+ * else - the result.
  */
 
 unsigned int binary_to_uint(const char *b)
@@ -14,15 +14,11 @@ unsigned int binary_to_uint(const char *b)
 
 	if (b[x] == '\0')
 		return (0);
-	while (b[x] != '\0')
+	while (b[x] == '0' || b[x] == '1')
 	{
-		if (b[x] < '2')
-		{
-			f = b[x] - '0';
-			n = n * 2 + f;
-		}
-		else
-		return (0);
+		n = n << 1;
+		f = b[x] - '0';
+		n = n + f;
 		x++;
 	}
 	return (n);
