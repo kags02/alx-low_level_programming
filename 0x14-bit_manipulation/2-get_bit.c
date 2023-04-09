@@ -9,7 +9,7 @@
 int get_bit(unsigned long int n, unsigned int index)
 {
 	unsigned int f;
-	int d;
+	unsigned int d;
 
 	d = 0;
 	f = 0;
@@ -22,7 +22,10 @@ int get_bit(unsigned long int n, unsigned int index)
 		d = n % 2;
 		if (f == index)
 		{
-			return (d);
+			if (d == 1)
+				return (1);
+			else 
+				return (0);
 		}
 		else if (f > index)
 			return (0);
