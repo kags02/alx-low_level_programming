@@ -24,12 +24,12 @@ int get_bit(unsigned long int n, unsigned int index)
 		{
 			if (d == 1)
 				return (1);
-			else 
+			else
 				return (0);
 		}
 		else if (f > index)
 			return (0);
-		n = n >> 1;
+		n = n / 2;
 		f++;
 	}
 	return (-1);
