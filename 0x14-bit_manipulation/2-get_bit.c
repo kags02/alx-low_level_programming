@@ -8,10 +8,11 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	unsigned int f,d;
+	unsigned int f;
+	int d;
 
-	f = 0;
 	d = 0;
+	f = 0;
 	while (n > 0)
 	{
 		d = n % 2;
@@ -19,10 +20,14 @@ int get_bit(unsigned long int n, unsigned int index)
 		{
 			if (d == 1)
 				return (1);
-			return (0);
+			else
+				return (0);
 		}
-		n = n / 2;
-		f++;
+		else
+		{
+			n = n / 2;
+			f++;
+		}
 	}
 	return (-1);
 }
