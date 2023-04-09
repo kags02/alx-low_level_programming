@@ -9,10 +9,12 @@
 
 unsigned int binary_to_uint(const char *b)
 {
-	unsigned int n = 0, f;
-	int x = 0;
+	unsigned int n, f;
+	int x;
 
-	if (b[x] == '\0')
+	x = 0;
+	n = 0;
+	if (!b)
 		return (0);
 	while (b[x] == '0' || b[x] == '1')
 	{
@@ -21,7 +23,7 @@ unsigned int binary_to_uint(const char *b)
 		n = n + f;
 		x++;
 	}
-	if (b[x] == '\0')
+	if (!b)
 	return (n);
 	return (0);
 }
