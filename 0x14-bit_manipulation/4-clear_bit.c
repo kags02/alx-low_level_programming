@@ -3,8 +3,7 @@
  * clear_bit - set bit at given index to 0.
  * @n: pointer to int n.
  * @index: the bit to change.
- * Return: 1 if it worked.
- * :-1 if an error worked.
+ * Return: 1 if it worked , -1 if an error happens.
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
