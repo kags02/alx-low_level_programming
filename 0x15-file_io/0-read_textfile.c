@@ -1,6 +1,5 @@
 #include <stdlib.h>
 #include "main.h"
-#include <stdio.h>
 /**
  * read_textfile - display content of file to screen.
  * @filename: pointer to text.
@@ -21,10 +20,10 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	a = open(filename, O_RDONLY);
 	if (a != 3)
 		return (0);
-	b = read(3, hello, letters);
+	b = read(a, hello, letters);
 	if (b != d)
 		return (0);
-	c = write(1, hello, b);
+	c = write(STDOUT_FILENO, hello, b);
 	if (c != b)
 		return (0);
 	free(hello);
