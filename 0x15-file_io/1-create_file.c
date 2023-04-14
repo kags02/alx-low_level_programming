@@ -27,6 +27,7 @@ int create_file(const char *filename, char *text_content)
 }
 else
 {
+	b = write(a, text_content, c);
 	close(a);
 	return (1);
 }}
