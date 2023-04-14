@@ -15,6 +15,10 @@ void cp(const char *filename1, const char *filename2)
 	int n, j, k, u;
 	char buffer[1024];
 
+	if (filename1 == NULL)
+		exit;
+	if (filename2 == NULL)
+		exit;
 	j = open(filename1, O_RDONLY);
 	if (j == -1)
 	{
@@ -24,8 +28,8 @@ void cp(const char *filename1, const char *filename2)
 	n = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
 	if (n == -1)
 	{
-		exit(99);
 		dprintf(2, "Can't write to %s\n", filename2);
+		exit(99);
 	}
 	k = read(j, buffer, 1024);
 	if (k == -1)
