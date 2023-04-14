@@ -16,9 +16,9 @@ void cp(const char *filename1, const char *filename2)
 	char buffer[1024];
 
 	if (filename1 == NULL)
-		exit;
+		exit(-1);
 	if (filename2 == NULL)
-		exit;
+		exit(-1);
 	j = open(filename1, O_RDONLY);
 	if (j == -1)
 	{
