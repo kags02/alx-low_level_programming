@@ -1,78 +1,79 @@
+#include "main.h"
 #include <stdio.h>
-#include "stdlib.h"
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
+#include <stdlib.h>
+
+void close_file(int fd);
+
+
 /**
- * close_file - close file descriptors.
- * @fd: the file descriptor to close.
+ * close_file - Closes file descriptors.
+ * @fd: The file descriptor to be closed.
  */
 void close_file(int fd)
 {
 	int c;
 
 	c = close(fd);
+
 	if (c == -1)
 	{
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
+
 /**
- * cp - copy content from one file to another.
- * @filename1: file to copy from.
- * @filename2: file to cpy to.
- * Return: void.
+ * main - Copies the contents of a file to another file.
+ * @argc: The number of arguments supplied to the program.
+ * @argv: An array of pointers to the arguments.
+ *
+ * Return: 0 on success.
+ *
+ * Description: If the argument count is incorrect - exit code 97.
+ *              If file_from does not exist or cannot be read - exit code 98.
+ *              If file_to cannot be created or written to - exit code 99.
+ *              If file_to or file_from cannot be closed - exit code 100.
  */
-void cp(const char *filename1, const char *filename2)
+int main(int argc, char *argv[])
 {
-	int n, j, k, u;
+	int a, to, r, w;
 	char buffer[1024];
 
-	if (filename1 == NULL)
-		exit(-1);
-	if (filename2 == NULL)
-		exit(-1);
-	j = open(filename1, O_RDONLY);
-	if (j == -1)
+	if (argc != 3)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from the file %s\n", filename1);
-		exit(98);
-	}
-	n = open(filename2, O_CREAT | O_WRONLY | O_TRUNC, 0664);
-	if (n == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", filename2);
-		exit(99);
-	}
-	k = read(j, buffer, 1024);
-	if (k == -1)
-		exit(-1);
-	u = write(n, buffer, k);
-	if (u == -1)
-		exit(-1);
-	close_file(n);
-	close_file(j);
-	exit(1);
-
-}
-/**
- * main - receives arguments and test the above function.
- * @b: number of arguments passed.
- * @av: arguments passed.
- * Return: 0.
- */
-int main(int b, char **av)
-{
-
-	if (b != 3)
-	{
-		dprintf(2, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
 		exit(97);
 	}
-	cp(av[1], av[2]);
+
+	a = open(argv[1], O_RDONLY);
+	r = read(a, buffer, 1024);
+	to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
+
+	do {
+		if (a == -1 || r == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't read from file %s\n", argv[1]);
+			exit(98);
+		}
+
+		w = write(to, buffer, r);
+		if (to == -1 || w == -1)
+		{
+			dprintf(STDERR_FILENO,
+				"Error: Can't write to %s\n", argv[2]);
+			exit(99);
+		}
+
+		r = read(a, buffer, 1024);
+		to = open(argv[2], O_WRONLY | O_APPEND);
+
+	} while (r > 0);
+
+
+	close_file(a);
+	close_file(to);
+
 	return (0);
 }
-
 
